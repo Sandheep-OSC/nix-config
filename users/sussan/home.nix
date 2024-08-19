@@ -10,10 +10,13 @@
     ./packages/apps.nix
     ./packages/shell.nix
     ./packages/shellprompt/starship.nix
+    ./wm/hyprland.nix
   ];
 
   home.username = "sussan";
   home.homeDirectory = "/home/sussan";
+
+  wayland.windowManager.hyprland.enable = true;
 
   programs = {
     # git = {

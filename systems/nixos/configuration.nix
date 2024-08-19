@@ -50,8 +50,11 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -87,7 +90,7 @@
     description = "Sandheep";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate neovim git wget curl
+      kdePackages.kate git wget curl
     #  thunderbird
     ];
   };
@@ -103,6 +106,14 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -110,6 +121,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    (pkgs.waybar.overrideAttrs (
+      oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      }
+    ))
+    mako
+    libnotify
+    hyprpaper
+    swaybg
+    wpaperd
+    mpvpaper
+    swww
+    wofi
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];

@@ -23,7 +23,7 @@ lvim.builtin.clipboard = {
 	},
 }
 
-lvim.colorscheme = "fluoromachine"
+lvim.colorscheme = "synthwave84"
 lvim.transparent_window = true
 -- lvim.format_on_save.enabled = true
 
@@ -43,28 +43,25 @@ lvim.plugins = {
 		event = "BufRead",
 	},
 	{
-		"maxmx03/fluoromachine.nvim",
-		config = function()
-			local fm = require("fluoromachine")
-			local themeArray = { "fluoromachine", "retrowave", "delta" }
-			local randomIndex = math.random(1, #themeArray)
-			local randomTheme = themeArray[randomIndex]
+    "maxmx03/fluoromachine.nvim",
+    priority = 1000,
+    config = function()
+      local fm = require("fluoromachine")
 
-			fm.setup({
-				glow = true,
-				theme = randomTheme,
-				brightness = 0.01,
-				overrides = {
-					["@keyword"] = { italic = true },
-					["@conditional"] = { italic = true },
-					["@include"] = { italic = true },
-					["@exception"] = { italic = true },
-					["@define"] = { italic = true },
-					-- ["@SpecialComment"] = { italic = true },
-				},
-			})
-		end,
-	},
+      fm.setup({
+        glow = true,
+        theme = "fluoromachine",
+        brightness = 0.01,
+        styles = {
+          keywords = {
+            italic = true,
+          },
+        },
+        transparent = true,
+      })
+
+    end,
+  },
 	{ "zyedidia/vim-snake" },
 	{ "sandheep45/synthwave84.nvim" },
 	-- { "mg979/vim-visual-multi" },

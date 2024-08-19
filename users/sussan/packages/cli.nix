@@ -26,6 +26,7 @@
         unzip
         xclip
         lua
+        ollama
       ] ++ (
         with pkgs-unstable; []
       );

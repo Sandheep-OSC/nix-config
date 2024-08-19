@@ -4,7 +4,9 @@ local tab_bar = require("tab-bar")
 local background = require("background")
 local launch = require("launch")
 local font = require("font")
-local config = {}
+local config = {
+  enable_wayland = false,
+}
 helpers.apply_to_config(config)
 colorscheme.apply_to_config(config)
 tab_bar.apply_to_config(config)

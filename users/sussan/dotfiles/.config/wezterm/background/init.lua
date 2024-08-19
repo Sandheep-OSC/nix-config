@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local module = {}
 function module.apply_to_config(config)
-	config.window_background_image = "~/Pictures/wallpapers/v0ae8WM.png"
+	-- config.window_background_image = "~/Pictures/wallpapers/v0ae8WM.png"
 
 	config.window_background_image_hsb = {
 		-- Darken the background image by reducing it to 1/3rd

@@ -22,6 +22,7 @@
       fish = {
         enable = true;
         interactiveShellInit = ''
+          export NIXPKGS_ALLOW_UNFREE=1
         '';
       };
     };
