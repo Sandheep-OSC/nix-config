@@ -9,6 +9,7 @@
     ./packages/terminals.nix
     ./packages/apps.nix
     ./packages/shell.nix
+    ./packages/flatpak.nix
     ./packages/shellprompt/starship.nix
     ./wm/hyprland.nix
   ];

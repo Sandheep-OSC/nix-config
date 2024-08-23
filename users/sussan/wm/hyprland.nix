@@ -10,13 +10,35 @@
     wayland.windowManager.hyprland = {
         enable = true;
         systemd.variables = ["-all"];
+        extraConfig = ''
+          exec = "/home/sussan/.config/hypr/swww_slideshow.sh"
+          windowrulev2= opacity 0.80 0.80,class:^(.*)
+          general {
+            border_size = 4
+            #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+            col.active_border=rgb(cdd6f4)
+            col.inactive_border = rgba(595959aa)
+          }
+          decoration {
+            rounding = 15
+            active_opacity = 1.0;
+            inactive_opacity = 0.6;
+            fullscreen_opacity = 1.0;
+          }
+        '';
         settings = {
           "$mod" = "SUPER";
-          "$terminal" = "alacritty";
+          "$terminal" = "wezterm";
           "$fileManager" = "dolphin";
           "$menu" = "wofi --show drun";
-          "exec-once" = [ "waybar" "mako" "nm-applet --indicator" "blueman-applet" ];
-          monitor="eDP-1,1920x1080@60.00800,0x0,1.333333";
+          "exec-once" = [
+            "waybar"
+            "mako"
+            "nm-applet --indicator"
+            "blueman-applet"
+            "swww-daemon"
+          ];
+          monitor="eDP-1,1920x1080@60.00800,0x0,1.25";
           input = {
             # follow_mouse = 1;
             # sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
@@ -81,6 +103,11 @@
             # Scroll through existing workspaces with mod + scroll
             "$mod, mouse_down, workspace, e+1"
             "$mod, mouse_up, workspace, e-1"
+
+            ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+            ", XF86MonBrightnessUp, exec, brightnessctl -e set 2%+"
+            ", XF86MonBrightnessDown, exec, brightnessctl -e set 2%-"
         ];
       };
       plugins = [
@@ -97,16 +124,31 @@
 
     home = {
       packages = with pkgs; [ 
+        (pkgs.waybar.overrideAttrs (
+          oldAttrs: {
+            mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+          }
+        ))
         wofi
         libsForQt5.dolphin
         blueman
         networkmanagerapplet
         libinput-gestures
         hyprlandPlugins.hyprtrails
+        brightnessctl
+        wireplumber
+        mako
+        libnotify
+        udiskie
+        swww
       ] ++ (
-        with pkgs-unstable; []
+        with pkgs-unstable; [
+        ]
       );
-      file = {};
+      file = {
+        ".config/hypr/wallpapers".source = ./wallpapers;
+        ".config/hypr/swww_slideshow.sh".source = ../scripts/swww_slideshow.sh;
+      };
     };
   };
 }

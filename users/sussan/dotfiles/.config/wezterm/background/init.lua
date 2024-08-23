@@ -6,7 +6,7 @@ function module.apply_to_config(config)
 
 	config.window_background_image_hsb = {
 		-- Darken the background image by reducing it to 1/3rd
-		brightness = 0.3,
+		brightness = 1,
 
 		-- You can adjust the hue by scaling its value.
 		-- a multiplier of 1.0 leaves the value unchanged.
@@ -16,8 +16,8 @@ function module.apply_to_config(config)
 		saturation = 1.0,
 	}
 
-	config.window_background_opacity = 0.6
-	config.text_background_opacity = 0.6
+	config.window_background_opacity = 1.0
+	config.text_background_opacity = 1.0
 end
 
 -- return our module table

@@ -26,6 +26,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.devmon.enable = true;
+  services.gvfs.enable = true; 
+  services.udisks2.enable = true;
+  services.flatpak.enable = true;
+
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -90,7 +95,6 @@
     description = "Sandheep";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate git wget curl
     #  thunderbird
     ];
   };
@@ -121,19 +125,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (pkgs.waybar.overrideAttrs (
-      oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      }
-    ))
-    mako
-    libnotify
-    hyprpaper
-    swaybg
-    wpaperd
-    mpvpaper
-    swww
-    wofi
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];

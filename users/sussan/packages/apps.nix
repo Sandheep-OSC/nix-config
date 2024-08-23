@@ -16,7 +16,9 @@
         zed-editor
         google-chrome
       ] ++ (
-        with pkgs-unstable; []
+        with pkgs-unstable; [
+            floorp
+          ]
       );
       file = {};
     };

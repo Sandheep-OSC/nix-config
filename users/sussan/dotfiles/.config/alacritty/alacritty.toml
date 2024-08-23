@@ -14,7 +14,7 @@ family = "LigaCartographCF Nerd Font"
 style = "Italic"
 
 [window]
-opacity = 0.9
+opacity = 1.0
 blur = true
 startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
