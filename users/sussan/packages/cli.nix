@@ -35,12 +35,15 @@
           neovim
           yazi
           colorls
+          eza
           lazygit
           fastfetch
           bat
         ]
       );
-      file = {};
+      file = {
+        ".config/yazi".source = ../packages/yazi;
+      };
     };
   };
 }
