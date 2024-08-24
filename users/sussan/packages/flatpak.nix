@@ -15,7 +15,7 @@
       "com.notesnook.Notesnook"
       "com.vivaldi.Vivaldi"
       "md.obsidian.Obsidian"
-      # "com.google.Chrome"
+      "io.github.zen_browser.zen"
       "com.obsproject.Studio"
       "com.spotify.Client"
       "com.discordapp.Discord"
