@@ -146,6 +146,7 @@
         libnotify
         udiskie
         swww
+        pywal
       ] ++ (
         with pkgs-unstable; [
           clipse

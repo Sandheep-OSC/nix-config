@@ -21,7 +21,7 @@ while true; do
 
   # Echo the random image path
   # echo "Random image: $RANDOM_IMAGE"
-  swww img "$RANDOM_IMAGE" --transition-type=any
+  swww img "$RANDOM_IMAGE" --transition-type=any && wal -i "$RANDOM_IMAGE"
 
   # Wait for 15 seconds before repeating
   sleep 8
