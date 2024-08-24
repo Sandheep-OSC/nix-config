@@ -39,6 +39,12 @@
           lazygit
           fastfetch
           bat
+          glow
+          miller
+          ouch
+          ripgrep
+          archivemount
+          rsync
         ]
       );
       file = {

@@ -2,12 +2,96 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[manager]
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
+[[manager.prepend_keymap]]
+on = ["f", "g"]
+run = "plugin fg"
+desc = "find file by content (fuzzy match)"
+[[manager.prepend_keymap]]
+on = ["f", "G"]
+run = "plugin fg --args='rg'"
+desc = "find file by content (ripgrep match)"
+[[manager.prepend_keymap]]
+on = ["f", "f"]
+run = "plugin fg --args='fzf'"
+desc = "find file by filename"
+[[manager.prepend_keymap]]
+on = ["f", "l"]
+run = "plugin jump-to-char"
+desc = "Jump to char"
+[[manager.prepend_keymap]]
+on = ["i"]
+run = "plugin keyjump --args=keep"
+desc = "Keyjump (Keep mode)"
+# [[manager.prepend_keymap]]
+# on   = [ "i" ]
+# run  = "plugin keyjump"
+# desc = "Keyjump (Normal mode)"
+# [[manager.prepend_keymap]]
+# on   = [ "i" ]
+# run  = "plugin keyjump --args=select"
+# desc = "Keyjump (Select mode)"
+# [[manager.prepend_keymap]]
+# on   = [ "i" ]
+# run  = "plugin keyjump --args=global"
+# desc = "Keyjump (Global mode)"
+# [[manager.prepend_keymap]]
+# on   = [ "i" ]
+# run  = "plugin keyjump --args='global once'"
+# desc = "Keyjump (once Global mode)"
+[[manager.prepend_keymap]]
+on = ["n", "n"]
+run = "plugin relative-motions"
+desc = "Trigger a new relative motion"
+[[manager.prepend_keymap]]
+on = ["m", "a"]
+run = "plugin archivemount --args=mount"
+desc = "Mount selected archive"
+[[manager.prepend_keymap]]
+on = ["m", "u"]
+run = "plugin archivemount --args=unmount"
+desc = "Unmount and save changes to original archive"
+[[manager.prepend_keymap]]
+on = ["c", "m"]
+run = "plugin chmod"
+desc = "Chmod on selected files"
+[[manager.prepend_keymap]]
+on = ["g", "i"]
+run = "plugin lazygit"
+desc = "run lazygit"
+[[manager.prepend_keymap]]
+on = ["m", "k"]
+run = "plugin mkdir"
+desc = "Create a directory"
+[[manager.prepend_keymap]]
+on = "R"
+run = "plugin rsync"
+desc = "Copy files using rsync"
+[[manager.prepend_keymap]]
+on = ["T", "T"]
+run = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+[[manager.prepend_keymap]]
+on = ["T", "M"]
+run = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+[[manager.prepend_keymap]]
+on = ["c", "p"]
+run = "plugin command"
+desc = "Yazi command prompt"
 
+[manager]
 keymap = [
-  # { on = [
-  #   "E",
-  # ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
+  { on = [
+    "E",
+  ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
+  { on = [
+    "n",
+    "s",
+  ], run = "plugin what-size", desc = "Calc size of selection or cwd" },
 
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = "<C-[>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },

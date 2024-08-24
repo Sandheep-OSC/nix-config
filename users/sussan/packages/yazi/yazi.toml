@@ -45,8 +45,10 @@ reveal = [
   { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-  { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
+  # { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+  # { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
+  { run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+  { run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
 ]
 play = [
   { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
@@ -120,6 +122,8 @@ suppress_preload = false
 fetchers = [
   # Mimetype
   { id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
+  { id = "git", name = "*", run = "git", prio = "normal" },
+  { id = "git", name = "*/", run = "git", prio = "normal" },
 ]
 preloaders = [
   # Image
@@ -133,7 +137,21 @@ preloaders = [
   { mime = "font/*", run = "font" },
   { mime = "application/vnd.ms-opentype", run = "font" },
 ]
-# prepend_previewers = [{ name = "*/", run = "eza-preview" }]
+prepend_previewers = [
+  { name = "*/", run = "eza-preview" },
+  { name = "*.md", run = "glow" },
+  { mime = "text/csv", run = "miller" },
+  { mime = "{image,audio,video}/*", run = "mediainfo" },
+  { mime = "application/x-subrip", run = "mediainfo" },
+
+  # Archive previewer
+  { mime = "application/*zip", run = "ouch" },
+  { mime = "application/x-tar", run = "ouch" },
+  { mime = "application/x-bzip2", run = "ouch" },
+  { mime = "application/x-7z-compressed", run = "ouch" },
+  { mime = "application/x-rar", run = "ouch" },
+  { mime = "application/x-xz", run = "ouch" },
+]
 previewers = [
   { name = "*/", run = "folder", sync = true },
   # Code
