@@ -1,11 +1,13 @@
 # Directory containing the images
-WALLPAPER_DIR="/home/sussan/.config/hypr/wallpapers/"
+WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
 
 # Check if the directory exists
 if [ ! -d "$WALLPAPER_DIR" ]; then
   echo "Wallpaper directory does not exist: $WALLPAPER_DIR"
   exit 1
 fi
+
+swww init
 
 while true; do
   # Get a random image from the directory
@@ -22,5 +24,5 @@ while true; do
   swww img "$RANDOM_IMAGE" --transition-type=any
 
   # Wait for 15 seconds before repeating
-  sleep 6
+  sleep 8
 done

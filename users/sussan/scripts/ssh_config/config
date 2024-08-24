@@ -1,0 +1,35 @@
+# Host aws-nexai-prod
+#    HostName 3.7.76.176
+#    IdentityFile ~/Downloads/prod-kp.pem
+#    User ubuntu
+#    IdentitiesOnly yes
+
+# github account: spp26041999@gmail.com
+Host github-spp26041999
+   HostName github.com
+   IdentityFile ~/.ssh/id_ed25519_spp26041999
+   IdentitiesOnly yes
+
+# Other github account: budtut143@gmail.com
+Host github-sussan
+   HostName github.com
+   IdentityFile ~/.ssh/id_ed25519_budtut143
+   IdentitiesOnly yes
+
+# Other github account: webappdevelop8@gmail.com
+Host github-dev
+   HostName github.com
+   IdentityFile ~/.ssh/id_ed25519_webappdevelop8
+   IdentitiesOnly yes
+
+# Other github account: sandeep@webknot.com
+Host github-webknot
+   HostName github.com
+   IdentityFile ~/.ssh/id_ed25519_webknot
+   IdentitiesOnly yes
+
+# Other github account: sussan.osc@gmail.com
+Host github-osc
+   HostName github.com
+   IdentityFile ~/.ssh/id_ed25519_osc
+   IdentitiesOnly yes

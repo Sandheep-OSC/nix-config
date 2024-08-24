@@ -36,6 +36,7 @@
         interactiveShellInit = ''
           export NIXPKGS_ALLOW_UNFREE=1
           export NEOVIM_PROFILE_PATH="neovim"
+          fastfetch
         '';
       };
     };

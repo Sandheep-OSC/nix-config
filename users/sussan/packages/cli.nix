@@ -27,13 +27,16 @@
         xclip
         lua
         ollama
-      kdePackages.kate git wget curl
+        kdePackages.kate
+        wget
+        curl
       ] ++ (
         with pkgs-unstable; [
           neovim
           yazi
           colorls
           lazygit
+          fastfetch
         ]
       );
       file = {};

@@ -11,8 +11,11 @@
         enable = true;
         systemd.variables = ["-all"];
         extraConfig = ''
-          exec = "/home/sussan/.config/hypr/swww_slideshow.sh"
+          exec = "$HOME/.config/hypr/swww_slideshow.sh"
+          exec-once = "clipse --listen-shell"
           windowrulev2= opacity 0.80 0.80,class:^(.*)
+          windowrulev2 = float,class:(clipse) # ensure you have a floating window class set if you want this behaviour
+          windowrulev2 = size 622 652,class:(clipse) # set the size of the window as necessary
           general {
             border_size = 4
             #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
@@ -108,6 +111,8 @@
             ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
             ", XF86MonBrightnessUp, exec, brightnessctl -e set 2%+"
             ", XF86MonBrightnessDown, exec, brightnessctl -e set 2%-"
+            "$mod, Z, exec, alacritty --class clipse -e 'clipse'"
+            "$mod, F, exec, alacritty --class yazi -e 'yazi'"
         ];
       };
       plugins = [
@@ -143,6 +148,7 @@
         swww
       ] ++ (
         with pkgs-unstable; [
+          clipse
         ]
       );
       file = {
