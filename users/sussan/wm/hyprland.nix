@@ -155,6 +155,7 @@
       file = {
         ".config/hypr/wallpapers".source = ./wallpapers;
         ".config/hypr/swww_slideshow.sh".source = ../scripts/swww_slideshow.sh;
+        ".ssh/config".source = ../scripts/ssh_config/config;
       };
     };
   };

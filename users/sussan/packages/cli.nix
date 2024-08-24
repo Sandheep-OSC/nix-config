@@ -37,6 +37,7 @@
           colorls
           lazygit
           fastfetch
+          bat
         ]
       );
       file = {};
