@@ -40,6 +40,7 @@
             "nm-applet --indicator"
             "blueman-applet"
             "swww-daemon"
+            "pypr"
           ];
           monitor="eDP-1,1920x1080@60.00800,0x0,1.25";
           input = {
@@ -113,6 +114,15 @@
             ", XF86MonBrightnessDown, exec, brightnessctl -e set 2%-"
             "$mod, Z, exec, alacritty --class clipse -e 'clipse'"
             "$mod, F, exec, alacritty --class yazi -e 'yazi'"
+
+            "$mod, A, exec, pypr toggle term"
+            "$mod, B, exec, pypr expose"
+            "$mod, J, exec, pypr change_workspace -1"
+            "$mod, K, exec, pypr change_workspace +1"
+            "$mod,  N, exec, pypr toggle_special minimized"
+            "$mod SHIFT, O, exec, pypr shift_monitors +1"
+            "$mod SHIFT, Z, exec, pypr zoom ++0.5"
+            "$mod, Z, exec, pypr zoom"
         ];
       };
       plugins = [
@@ -150,12 +160,14 @@
       ] ++ (
         with pkgs-unstable; [
           clipse
+          pyprland
         ]
       );
       file = {
         ".config/hypr/wallpapers".source = ./wallpapers;
         ".config/hypr/swww_slideshow.sh".source = ../scripts/swww_slideshow.sh;
         ".ssh/config".source = ../scripts/ssh_config/config;
+        ".config/hypr/pyprland.toml".source = ./plugins/pyprland/pyprland.toml;
       };
     };
   };

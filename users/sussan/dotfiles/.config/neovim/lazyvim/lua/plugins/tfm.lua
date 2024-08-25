@@ -38,11 +38,11 @@ return {
     keys = {
         -- Make sure to change these keybindings to your preference,
         -- and remove the ones you won't use
-        {
-            "<leader>e",
-            ":Tfm<CR>",
-            desc = "TFM",
-        },
+        -- {
+        --     "<leader>e",
+        --     ":Tfm<CR>",
+        --     desc = "TFM",
+        -- },
         {
             "<leader>mh",
             ":TfmSplit<CR>",

@@ -21,6 +21,7 @@
         cmake
         python312
         nodejs_20
+        corepack_20
         cargo
         rustc
         unzip
