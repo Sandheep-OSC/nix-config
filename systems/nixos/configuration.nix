@@ -93,7 +93,7 @@
   users.users.sussan = {
     isNormalUser = true;
     description = "Sandheep";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -102,6 +102,10 @@
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "sussan";
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
 
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [ fish zsh bash ];

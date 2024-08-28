@@ -41,8 +41,8 @@ size = "75% 60%"
 
 [scratchpads.volume]
 animation = "fromRight"
-command = "pavucontrol"
-class = "org.pulseaudio.pavucontrol"
+command = "helvum"
+class = "org.pipewire.helvum"
 lazy = true
 size = "40% 90%"
 unfocus = "hide"

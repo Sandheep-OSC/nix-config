@@ -28,6 +28,16 @@
             inactive_opacity = 0.6;
             fullscreen_opacity = 1.0;
           }
+          bind = $mod SHIFT, Z, exec, pypr zoom
+          bind = $mod ALT, P,exec, pypr toggle_dpms
+          bind = $mod SHIFT, O, exec, pypr shift_monitors +1
+          bind = $mod, B, exec, pypr expose
+          bind = $mod, K, exec, pypr change_workspace +1
+          bind = $mod, J, exec, pypr change_workspace -1
+          bind = $mod,L,exec, pypr toggle_dpms
+          bind = $mod SHIFT,M,exec,pypr toggle stb stb-logs
+          bind = $mod,A,exec,pypr toggle term
+          bind = $mod,V,exec,pypr toggle volume
         '';
         settings = {
           "$mod" = "SUPER";
@@ -115,14 +125,14 @@
             "$mod, Z, exec, alacritty --class clipse -e 'clipse'"
             "$mod, F, exec, alacritty --class yazi -e 'yazi'"
 
-            "$mod, A, exec, pypr toggle term"
-            "$mod, B, exec, pypr expose"
-            "$mod, J, exec, pypr change_workspace -1"
-            "$mod, K, exec, pypr change_workspace +1"
-            "$mod,  N, exec, pypr toggle_special minimized"
-            "$mod SHIFT, O, exec, pypr shift_monitors +1"
-            "$mod SHIFT, Z, exec, pypr zoom ++0.5"
-            "$mod, Z, exec, pypr zoom"
+            # "$mod, A, exec, pypr toggle term"
+            # "$mod, B, exec, pypr expose"
+            # "$mod, J, exec, pypr change_workspace -1"
+            # "$mod, K, exec, pypr change_workspace +1"
+            # "$mod,  N, exec, pypr toggle_special minimized"
+            # "$mod SHIFT, O, exec, pypr shift_monitors +1"
+            # "$mod SHIFT, Z, exec, pypr zoom ++0.5"
+            # "$mod, Z, exec, pypr zoom"
         ];
       };
       plugins = [

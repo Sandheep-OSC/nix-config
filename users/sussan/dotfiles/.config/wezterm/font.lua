@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local module = {}
 function module.apply_to_config(config)
-  config.font_size = 12.0
+  config.font_size = 13.0
   config.cell_width = 1.0
   config.line_height = 1.0
 

@@ -36,6 +36,8 @@
         interactiveShellInit = ''
           export NIXPKGS_ALLOW_UNFREE=1
           export NEOVIM_PROFILE_PATH="neovim"
+          export NIXOS_OZONE_WL=1
+          zoxide init --cmd=cd fish | source
           fastfetch
         '';
       };

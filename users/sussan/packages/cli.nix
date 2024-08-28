@@ -22,6 +22,8 @@
         python312
         nodejs_20
         corepack_20
+        turbo
+        bun
         cargo
         rustc
         unzip
@@ -35,6 +37,7 @@
         with pkgs-unstable; [
           neovim
           yazi
+          zoxide
           colorls
           eza
           lazygit
