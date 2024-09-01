@@ -212,6 +212,8 @@
           clipse
           pyprland
           playerctl
+          cava
+          helvum
         ]
       );
       file = {
@@ -220,6 +222,8 @@
         ".ssh/config".source = ../scripts/ssh_config/config;
         ".config/hypr/pyprland.toml".source = ./plugins/pyprland/pyprland.toml;
         ".config/hypr/check_battery.sh".source = ../scripts/check_battery.sh;
+        ".config/waybar".source = ./plugins/waybar;
+        ".config/cava".source = ./plugins/cava;
       };
     };
   };

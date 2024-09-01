@@ -122,6 +122,11 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
