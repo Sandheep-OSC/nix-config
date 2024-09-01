@@ -12,6 +12,7 @@
         systemd.variables = ["-all"];
         extraConfig = ''
           exec = "$HOME/.config/hypr/swww_slideshow.sh"
+          exec-once = "sh $HOME/.config/hypr/check_battery.sh"
           exec-once = "clipse --listen-shell"
           windowrulev2= opacity 0.80 0.80,class:^(.*)
           windowrulev2 = float,class:(clipse) # ensure you have a floating window class set if you want this behaviour
@@ -29,7 +30,6 @@
             fullscreen_opacity = 1.0;
           }
           bind = $mod SHIFT, Z, exec, pypr zoom
-          bind = $mod ALT, P,exec, pypr toggle_dpms
           bind = $mod SHIFT, O, exec, pypr shift_monitors +1
           bind = $mod, B, exec, pypr expose
           bind = $mod, K, exec, pypr change_workspace +1
@@ -37,7 +37,42 @@
           bind = $mod,L,exec, pypr toggle_dpms
           bind = $mod SHIFT,M,exec,pypr toggle stb stb-logs
           bind = $mod,A,exec,pypr toggle term
-          bind = $mod,V,exec,pypr toggle volume
+          # bind = $mod,V,exec,pypr toggle volume
+
+          # Switch to a submap called resize for resizing windows
+          bind = ALT, R, submap, resize
+          bind = ALT, R, exec, notify-send "Resize Mode Activated"
+
+          # Switch to a submap called move for moving windows
+          bind = ALT, M, submap, move
+          bind = ALT, M, exec, notify-send "Move Mode Activated"
+
+          # Start a submap called "resize" for resizing active window
+          submap = resize
+
+          # Sets repeatable binds for resizing the active window
+          binde = , right, resizeactive, 10 0
+          binde = , left, resizeactive, -10 0
+          binde = , up, resizeactive, 0 -10
+          binde = , down, resizeactive, 0 10
+
+          # Use reset to go back to the global submap
+          bind = , escape, submap, reset
+
+          # Start a submap called "move" for moving active window
+          submap = move
+
+          # Sets repeatable binds for moving the active window
+          binde = , right, moveactive, 10 0
+          binde = , left, moveactive, -10 0
+          binde = , up, moveactive, 0 -10
+          binde = , down, moveactive, 0 10
+
+          # Use reset to go back to the global submap
+          bind = , escape, submap, reset
+
+          # Reset submap to return to the global context
+          submap = reset
         '';
         settings = {
           "$mod" = "SUPER";
@@ -122,6 +157,11 @@
             ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
             ", XF86MonBrightnessUp, exec, brightnessctl -e set 2%+"
             ", XF86MonBrightnessDown, exec, brightnessctl -e set 2%-"
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioPlay, exec, playerctl play-pause"
+            ", XF86AudioPrev, exec, playerctl previous"
+            ", XF86AudioNext, exec, playerctl next"
+
             "$mod, Z, exec, alacritty --class clipse -e 'clipse'"
             "$mod, F, exec, alacritty --class yazi -e 'yazi'"
 
@@ -171,6 +211,7 @@
         with pkgs-unstable; [
           clipse
           pyprland
+          playerctl
         ]
       );
       file = {
@@ -178,6 +219,7 @@
         ".config/hypr/swww_slideshow.sh".source = ../scripts/swww_slideshow.sh;
         ".ssh/config".source = ../scripts/ssh_config/config;
         ".config/hypr/pyprland.toml".source = ./plugins/pyprland/pyprland.toml;
+        ".config/hypr/check_battery.sh".source = ../scripts/check_battery.sh;
       };
     };
   };
