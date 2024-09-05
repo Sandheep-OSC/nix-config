@@ -21,4 +21,4 @@ function Transparent(color)
   -- vim.opt.transparency = 1  -- May not work on all terminals
   -- vim.opt.background = "none"  -- Might affect other elements besides background
 end
-Transparent("fluoromachine")
+Transparent("wal")
