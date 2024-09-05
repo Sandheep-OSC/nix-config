@@ -214,6 +214,7 @@
           playerctl
           cava
           helvum
+          pavucontrol
         ]
       );
       file = {
